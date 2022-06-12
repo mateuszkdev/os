@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, rmdirSync, createWriteStream } from 'fs';
+import { inspect } from 'util';
 
 /**
  * User default config
@@ -25,7 +26,7 @@ export default class Users {
      */
     constructor () {
 
-        this.usersDir = `${__dirname}/../../users`;
+        this.usersDir = `${__dirname}/../../../src/users`;
 
     }
 
@@ -47,13 +48,19 @@ export default class Users {
      */
     public async createUser (username: string): Promise<boolean | unknown> {
 
-        console.log(1)
         try {
-            await mkdirSync(`${this.usersDir}/${username}`);
-            const s = await createWriteStream(`${this.usersDir}/${username}/sysConf.ts`);
-            s.write(`${defaultUserConfig}`);
-            await s.close();
-            return true;
+
+            const dir = `${this.usersDir}/${username}`;
+
+            if (!existsSync(dir)) {
+
+                await mkdirSync(dir, { recursive: true });
+                const s = await createWriteStream(`${dir}/sysConf.ts`);
+                s.write(`export default ${inspect(defaultUserConfig, { depth: 0 })}`);
+                await s.close();
+                return true;
+
+            }
 
         } catch (e) {
             return e;

@@ -1,0 +1,22 @@
+system
+|
+∟ apps
+|   ∟ apps handler
+|
+∟ config
+|   ∟ system config json files
+|
+∟ programData
+|   ∟ cache and memory of apps
+|
+∟ system
+|   ∟ system using webview, express ( node.js )
+|
+∟ users
+    ∟ documents ( user local data )
+    |   ∟ photos
+    |   ∟ texts
+    |   ∟ music?
+    |
+    ∟ preferences
+        ∟ user system config ( like language, desktop photo etc )

@@ -1,0 +1,20 @@
+body {
+
+    margin: 0;
+    background-color: blue;
+    padding-top: 100px;
+}
+
+img {
+    width: 60%;
+}
+
+#left {
+    float: left;
+    width: 50%;
+}
+
+#right {
+    width: 50%;
+    float: left;
+}

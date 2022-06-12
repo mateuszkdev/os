@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    font-family: -apple-system, sans-serif;
+    /*    @todo Custom background for user preference setup     */
+    background-image: url("https://i.pinimg.com/originals/40/1d/3a/401d3af7e9822626a908e5fea98d3e72.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#taskbar {
+
+    padding: 10px;
+    bottom: 0;
+    position: fixed;
+    width: 99%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.63);
+    color: white;
+
+}
+
+.clock {
+
+    padding: 10px;
+    float: right;
+
+}

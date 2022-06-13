@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background-color: ghostwhite;
+}
+
+header {
+
+    position: fixed;
+    width: 50%;
+    height: 10%;
+    left: 25%;
+    top: 10%;
+    background-color: lightgray;
+
+    text-align: center;
+    font-size: 35px;
+
+}
+
+header a {
+
+    position: fixed;
+    top: 12%;
+    left: 42%;
+
+}
+
+#container {
+
+    background-color: lightgray;
+    color: black;
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+
+}

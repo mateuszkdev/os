@@ -11,7 +11,7 @@ export const defaultUserConfig = {
     wallpaper: 'default1.png', // for now user can choose wallpapers from default directory, user cant set own
     clockType: '24h', // 12h available to
     avatar: 'default1.png', // for now user can choose avatar from default directory, user cant set own
-    password: '' // default no password, user can set password in account creator or everytime in profile settings 
+    password: '' // default no password, user can set password in account creator or everytime in profile settings
 }
 
 /**

@@ -23,16 +23,17 @@ export default class SystemApp {
 
         this.app = ex();
 
-        // tests @todo - Needed handler for pages
+        // tests @todo - remove tests when "test" handling available
         this.app.get('/', (req, res) => res.render('desktop'));
-        this.app.get('/test', async (req, res) => {
-            const _ = await users.createUser('Mateusz');
-            if (_ instanceof Error) {
-                new ErrorsHandler().critical(res, _);
-
-            }
-            else return console.log('User created');
-        });
+        // this.app.get('/test', async (req, res) => {
+        //     const _ = await users.createUser('Mateusz');
+        //     if (_ instanceof Error) {
+        //         new ErrorsHandler().critical(res, _);
+        //
+        //     }
+        //     else return console.log('User created');
+        // });
+        this.app.get('/test', (req, res) => res.render('creators/account/create/first'))
 
         this.setUp();
     }

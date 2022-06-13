@@ -4,8 +4,12 @@ export default {
 
     name: '/createAccount',
 
-    get: async ({}) => {},
+    get: async ({ res }) => {
 
-    post: async ({}) => {}
+        return res.render('creators/account/create/first');
+
+    },
+
+    // post: async ({}) => {}
 
 } as App

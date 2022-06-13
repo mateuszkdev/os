@@ -1,5 +1,6 @@
-import { readdirSync } from 'fs';
+import { readdirSync, existsSync } from 'fs';
 import { Application } from 'express';
+import { App } from 'Types/system/api/apps';
 
 /**
  * @name Apps
@@ -23,6 +24,8 @@ export default class Apps {
             apps: `${__dirname}/../../apps`
         }
 
+        this.setUp();
+
     }
 
     /**
@@ -31,23 +34,42 @@ export default class Apps {
      */
     public async setUp (): Promise<void> {
 
+        console.log(`== Loading applications ==`);
+
         Object.values(this.dirs).forEach(directory => {
+
+            console.log(`Scaning ${directory.slice(30)}..`);
 
             readdirSync(directory).forEach(dir => {
 
-                readdirSync(dir)
+                if (!existsSync(`${directory}/${dir}`)) {
+                    console.log(`Found: 0 apps`)
+                    return;
+                }
+
+                console.log(`→ Found: ${dir}`);
+
+                readdirSync(`${directory}/${dir}`)
                     .filter(f => f.endsWith('.js') && new RegExp(`index`, 'gmi').test(f))
                     .forEach(file => {
 
-                        // @todo Type of app route
-                        const app = require(`${directory}/${dir}/${file}`).default;
+                        const app: App = require(`${directory}/${dir}/${file}`).default;
+
+                        if (!app || !app.name) {
+                            console.log(`App dont have name: disabled`);
+                            return;
+                        }
+
+                        console.log(`• • Loaded ${app.name}`);
 
                         if (app.get) {
-                            this.app.get(app.name, (req, res) => app.get.run(req, res));
+                            this.app.get(app.name, (req, res) => app.get!({ req, res }))
+                            console.log(`• • • [GET]`);
                         }
 
                         if (app.post) {
-                            this.app.post(app.name, (req, res) => app.post.run(req, res));
+                            this.app.post(app.name, (req, res) => app.post!({ req, res }));
+                            console.log(`• • • [POST]`);
                         }
 
                     });

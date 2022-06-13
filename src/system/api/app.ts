@@ -4,6 +4,7 @@ import { lang } from '../../run';
 
 import conf from '../../config/express';
 import ErrorsHandler from "../handlers/Errors";
+import AppsHandler from '../handlers/Apps';
 
 // @todo - Delete this line
 import { users } from '../../run';
@@ -33,7 +34,6 @@ export default class SystemApp {
         //     }
         //     else return console.log('User created');
         // });
-        this.app.get('/test', (req, res) => res.render('creators/account/create/first'))
 
         this.setUp();
     }
@@ -43,7 +43,7 @@ export default class SystemApp {
      * @description SetUp express usages and setters
      * @returns {void}
      */
-     setUp (): void {
+     public async setUp (): Promise<void> {
 
         this.app.set('views', `${__dirname}/../../../gui/structure`);
         this.app.set('view engine', 'pug');
@@ -53,6 +53,8 @@ export default class SystemApp {
         this.app.use(ex.json());
         this.app.use(es(conf.session));
         this.app.use(new ErrorsHandler().errorsHandler);
+
+        await new AppsHandler(this.app);
 
         const currentLang = lang.get('error', { h4: lang.langs.get('en')?.error.h4s });
         this.app.get('*', (req, res) => res.render('error', { ...currentLang }));

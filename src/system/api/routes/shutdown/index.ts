@@ -1,17 +1,15 @@
-// @todo Typ of app
-import { Request, Response } from 'express';
+import { App } from 'Types/system/api/apps';
 
 export default {
 
     name: '/shutdown',
-        // @todo Types from app type
-    get: (req: Request, res: Response) => {
+
+    get: ({}) => {
         // some code
     },
 
-    // @todo Types from app type
-    post: (req: Request, res: Response) => {
+    post: ({}) => {
         // some code
     }
 
-}
+} as App

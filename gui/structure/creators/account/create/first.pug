@@ -2,3 +2,15 @@ extends ../template.pug
 
 append header
     a Select Language
+
+append container
+
+    form(method="post" action="/createAccount")
+        input(type="text" style="display: none;" name="page" value="1")
+
+        | Select your language, next steps will be in that language. <br> <br>
+        select(name="chooseLanguage")
+            option(name="en") English
+            option(name="pl") Polski
+
+        input(type="submit" class="sub" value=">")

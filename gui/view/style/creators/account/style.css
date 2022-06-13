@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: ghostwhite;
+    font-family: -apple-system, sans-serif;
 }
 
 header {
@@ -21,7 +22,7 @@ header a {
 
     position: fixed;
     top: 12%;
-    left: 42%;
+    left: 40%;
 
 }
 
@@ -35,4 +36,33 @@ header a {
     top: 25%;
     left: 25%;
 
+}
+
+form {
+
+    text-align: center;
+    margin: 20%;
+    font-size: 20px;
+
+}
+
+select {
+    width: 40%;
+}
+
+.sub {
+
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin: 5%;
+    padding: 2% 5% 2% 5%;
+    border: none;
+    box-shadow: 1px 1px 20px white;
+    background-color: lightskyblue;
+}
+
+.sub:hover {
+    background-color: deepskyblue;
+    box-shadow: 1px 1px 200px black;
 }

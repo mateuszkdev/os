@@ -56,6 +56,7 @@ export default class SystemApp {
 
         const currentLang = lang.get('error', { h4: lang.langs.get('en')?.error.h4s });
         this.app.get('*', (req, res) => res.render('error', { ...currentLang }));
+        this.app.post('*', (req, res) => res.render('error', { ...currentLang }));
 
         // @todo - session ( user logged ) handler
 

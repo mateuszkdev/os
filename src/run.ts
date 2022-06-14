@@ -6,12 +6,15 @@ import Gui from './system/gui/view';
 import Languages from './system/handlers/Languages';
 import Users from './system/handlers/Users';
 
+// dev option for dev usages
+const windowWillOpen: boolean = false;
+
 export default class Os {
 
     static async start (): Promise<void> {
 
         await new SystemApp().start();
-        new Gui();
+        if (windowWillOpen) new Gui();
 
     }
 

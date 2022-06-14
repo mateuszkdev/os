@@ -3,9 +3,9 @@ import { lang } from '../../../../../run';
 
 export default async ({ req, res }: AppArgs): Promise<void> => {
 
-    req.session.language = req.body.chooseLanguage.slice(0, 2).toLowerCase();
+    lang.setSessionLanguage = req.body.chooseLanguage;
 
-    const languge = lang.langs.get(req.session.language)?.accountCreator.p2;
+    const languge = lang.langs.get(lang.cache.language)?.accountCreator.p2;
     return res.render('creators/account/create/second', languge);
 
 }

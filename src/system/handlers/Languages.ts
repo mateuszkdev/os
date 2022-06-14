@@ -38,20 +38,20 @@ export default class Languages {
     setUpLangs (): void {
 
         this.langs.set('en', en);
-        this.langs.set('po', pl);
+        this.langs.set('pl', pl);
 
     }
 
     /**
      * @name setSessionLanguage
      * @description Set up language from user preferences
-     * @param {string} username Account name
+     * @param {string} language Language
      * @returns {*}
      */
-    set setSessionLanguage (username: string) {
+    set setSessionLanguage (language: string) {
 
         // @todo - Chose language from user system config - required login
-        const lang = 'en';
+        const lang = language;
         const region = 'eu';
 
         this.cache.language = lang;

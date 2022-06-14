@@ -11,9 +11,9 @@ export default async ({ req, res }: AppArgs): Promise<void> => {
     const passwordHash = hashSync(password, 10);
 
     await users.createUser(username);
-    await users.updateUserConfig(username, { password: passwordHash });
+    await users.setUserPassowrd(username, passwordHash);
 
-    // @todo languge 
+    // @todo languge
     return res.render('creators/account/create/second')
 
 }

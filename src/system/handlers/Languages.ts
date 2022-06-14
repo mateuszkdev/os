@@ -21,7 +21,7 @@ export default class Languages {
         this.cache = {
             user: 'gues',
             language: 'en',
-            region: 'eu'
+            region: ''
         }
 
         this.langs = new Map();
@@ -51,10 +51,9 @@ export default class Languages {
     set setSessionLanguage (language: string) {
 
         // @todo - Chose language from user system config - required login
-        const lang = language;
         const region = 'eu';
 
-        this.cache.language = lang;
+        this.cache.language = language;
         this.cache.region = region;
 
     }
@@ -66,7 +65,7 @@ export default class Languages {
      * @param {Object} options Data to replace
      * @returns {Object} Replaced object
      */
-    replaceText (ob: any, options: any): ILanguage {
+    replaceText (ob: any, options?: any): ILanguage {
 
         if (!options) return ob;
 

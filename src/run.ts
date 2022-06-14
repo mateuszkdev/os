@@ -6,8 +6,11 @@ import Gui from './system/gui/view';
 import Languages from './system/handlers/Languages';
 import Users from './system/handlers/Users';
 
+// export ( and ofc connect db ) models
+export * from './system/database/index';
+
 // dev option for dev usages
-const windowWillOpen: boolean = false;
+const windowWillOpen: boolean = true;
 
 export default class Os {
 

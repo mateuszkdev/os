@@ -1,5 +1,6 @@
 import { App } from 'Types/system/api/apps';
 
+import p1 from './pages/p1';
 import p2 from './pages/p2';
 
 /**
@@ -17,7 +18,8 @@ export default {
 
     post: async ({ req, res }) => {
 
-        switch (req.body.page) {
+        switch (parseInt(req.body.page)) {
+            case 1: return p1({ req, res });
             case 2: return p2({ req, res });
         }
 

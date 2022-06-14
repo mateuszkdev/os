@@ -1,0 +1,15 @@
+extends ../template.pug
+
+append header
+    a #{header}
+
+append container
+
+    form(method="post" action="/createAccount")
+        input(type="text" style="display: none;" name="page" value="2")
+
+        | #{description}. <br> <br>
+
+        
+
+        input(type="submit" class="sub" value=">")

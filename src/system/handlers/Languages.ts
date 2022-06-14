@@ -64,7 +64,9 @@ export default class Languages {
      * @param {Object} options Data to replace
      * @returns {Object} Replaced object
      */
-    replaceText (ob: any, options: any): Object {
+    replaceText (ob: any, options: any): ILanguage {
+
+        if (!options) return ob;
 
         Object.keys(options).forEach(key => {
 
@@ -88,7 +90,7 @@ export default class Languages {
      * @param key
      * @param options
      */
-    get (key: any, options: Object): Object {
+    get (key: any, options?: Object): ILanguage {
 
         const lang: any = this.langs.get(this.cache.language);
         const ob = lang[key];

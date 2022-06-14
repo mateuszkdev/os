@@ -7,13 +7,14 @@ export default async ({ req, res }: AppArgs): Promise<void> => {
 
     const username = req.body.username;
     const password = req.body.password;
+    const language = req.session.language;
 
     const passwordHash = hashSync(password, 10);
 
     await users.createUser(username);
-    await users.setUserPassowrd(username, passwordHash);
+    await users.updateUserConfig(username, { password: passwordHash, language });
 
     // @todo languge
-    return res.render('creators/account/create/second')
+    return res.render('creators/account/create/three')
 
 }

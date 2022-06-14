@@ -14,7 +14,7 @@ export default async ({ req, res }: AppArgs): Promise<void> => {
     await users.createUser(username);
     await users.updateUserConfig(username, { password: passwordHash, language });
 
-    // @todo languge
-    return res.render('creators/account/create/three')
+    const l: any = lang.replaceText(lang.langs.get(language)?.accountCreator.p3, { textUsername: username });
+    return res.render('creators/account/create/three', { texts: l });
 
 }

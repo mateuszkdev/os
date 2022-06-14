@@ -13,6 +13,11 @@ export interface ILanguage {
             description: string;
             input1: string;
             input2: string;
+        },
+        p3: {
+            textHello: string;
+            textWelcome: string;
+            textUsername: string;
         }
     }
 

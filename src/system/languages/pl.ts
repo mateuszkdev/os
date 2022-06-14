@@ -15,6 +15,11 @@ export default {
             description: 'Podaj nazwę użytkownika i hasło ( możesz też klinkąć przycisk poniżej aby konto nie miało hasła ).',
             input1: 'Nazwa użytkownika',
             input2: 'Hasło'
+        },
+        p3: {
+            textHello: 'Witaj!',
+            textWelcome: 'Zapraszam..',
+            textUsername: '{{username}}'
         }
     }
 

@@ -1,0 +1,18 @@
+head
+    link(rel="stylesheet" href="style/creators/account/done.css")
+
+body
+
+    div#container
+        span#text1
+        span#text2
+
+    svg(id="filters")
+        defs
+            filter(id="threshold")
+                feColorMatrix(in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 255 -140")
+
+
+    script const importedLanguage = ['👽', `#{texts.textHello}`, `#{texts.textWelcome}`, `#{texts.textUsername}`];
+    script(src="scripts/creators/account/done.js")
+    script setTimeout(() => { window.location.href = 'http://127.0.0.1:3040/' }, 4000);

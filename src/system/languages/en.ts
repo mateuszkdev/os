@@ -15,6 +15,11 @@ export default {
             description: 'Enter your username and set your password ( you can also click ckechbox below to no-password account ).',
             input1: 'Username',
             input2: 'Password'
+        },
+        p3: {
+            textHello: 'Hello!',
+            textWelcome: 'Welcome..',
+            textUsername: '{{username}}'
         }
     }
 

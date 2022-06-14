@@ -53,6 +53,8 @@ export default class Users {
      */
     public async createUser (username: string): Promise<boolean> {
 
+        if (await this.checkIsUserExists(username)) return false;
+
         const data: IUser = defaultUserConfig;
         data.username = username;
         data.password = '';

@@ -1,10 +1,12 @@
 import { existsSync, mkdirSync, rmdirSync, createWriteStream } from 'fs';
 import { inspect } from 'util';
 
+import { IdefaultUserConfig } from 'Types/system/handlers/users';
+
 /**
  * User default config
  */
-export const defaultUserConfig = {
+export const defaultUserConfig: IdefaultUserConfig = {
     language: 'en',
     region: 'eu',
     fontSize: 24,
@@ -83,6 +85,73 @@ export default class Users {
         } catch (e) {
             return false;
         }
+
+    }
+
+    /**
+     * @name getUserConfig
+     * @description Get user sysConfig - this method dont check is user exists
+     * @param {string} username name of account
+     * @returns {IdefaultUserConfig} User config
+     */
+    public async getUserConfig (username: string): Promise<IdefaultUserConfig> {
+
+        const conf: IdefaultUserConfig = require(`${this.usersDir}/${username}/sysConf.ts`);
+        return conf;
+
+    }
+
+    /**
+     * @name updateUserConfig
+     * @description Update user system config
+     * @param {string} username Name of account
+     * @param {IdefaultUserConfig} newConfig User config object
+     * @returns {boolean}
+     */
+    public async updateUserConfig (username: string, newConfig: IdefaultUserConfig): Promise<boolean> {
+
+        try {
+
+            if (!this.checkIsUserExists(username)) return false;
+            else {
+
+                const conf = await this.getUserConfig(username);
+
+                Object.keys(newConfig).forEach(key => {
+                    (conf as any)[key] = (newConfig as any)[key];
+                })
+
+                const s = await createWriteStream(`${this.usersDir}/${username}/sysConf.ts`);
+                s.write(`export default ${inspect(conf, { depth: 0 })}`);
+                await s.close();
+
+                return true;
+
+            }
+
+        } catch (e) {
+            return false;
+        }
+
+    }
+
+    /**
+     * @name setUserPassowrd
+     * @description Set password to user. param password with 0 letters string equals to non-password account ( just return )
+     * @param {string} username Name of account to password setup
+     * @param {string} password Password Has
+     * @returns {boolean}
+     */
+    public async setUserPassowrd (username: string, password: string): Promise<boolean> {
+
+        if (!this.checkIsUserExists(username)) return false;
+
+        const conf = await this.getUserConfig(username);
+        conf.password = password;
+
+        await this.updateUserConfig(username, conf);
+
+        return true;
 
     }
 

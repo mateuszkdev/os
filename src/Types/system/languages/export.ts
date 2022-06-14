@@ -5,6 +5,15 @@ export interface ILanguage {
         h2: string;
         h4: string;
         h4s: string;
+    },
+
+    accountCreator: {
+        p2: {
+            header: string;
+            description: string;
+            input1: string;
+            input2: string;
+        }
     }
 
 }

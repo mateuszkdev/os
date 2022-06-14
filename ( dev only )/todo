@@ -3,8 +3,8 @@
 [] Register panel
 [] Login panel
 [✅] System error handling
-[] Routing apps
-[] Apps handler
+[✅] Routing apps
+[✅] Apps handler
 [✅] Languages handler
-[] Languages config
+[✅] Languages config
 [] dirs

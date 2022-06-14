@@ -48,7 +48,7 @@ export default class Languages {
      */
     set setSessionLanguage (username: string) {
 
-        // @todo - Chose language from user system config
+        // @todo - Chose language from user system config - required login
         const lang = 'en';
         const region = 'eu';
 

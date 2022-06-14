@@ -2,6 +2,7 @@ import { cache } from 'Types/system/handlers/languages';
 import { ILanguage } from 'Types/system/languages/export';
 
 import en from '../languages/en';
+import pl from '../languages/pl';
 
 /**
  * @name Languages
@@ -37,6 +38,7 @@ export default class Languages {
     setUpLangs (): void {
 
         this.langs.set('en', en);
+        this.langs.set('po', pl);
 
     }
 

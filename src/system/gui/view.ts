@@ -16,7 +16,7 @@ export default class Gui {
             title: 'OS',
             width: 1280,
             height: 720,
-            url: `http://127.0.0.1:${exConf.port}/`,
+            url: `http://127.0.0.1:${exConf.port}/login`,
             cwd: process.cwd()
         });
 

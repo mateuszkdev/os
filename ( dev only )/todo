@@ -1,7 +1,7 @@
 [✅] User account creating
 [] User logging
 [✅] Register panel
-[] Login panel
+[✅] Login panel
 [✅] System error handling
 [✅] Routing apps
 [] Apps handler

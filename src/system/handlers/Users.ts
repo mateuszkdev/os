@@ -1,6 +1,7 @@
 import { IUser } from 'Types/system/database/models/Users';
 import { db } from '../../run';
 import { Request, Response, NextFunction } from 'express';
+import { compareSync } from 'bcrypt';
 
 /**
  * User default config
@@ -121,7 +122,10 @@ export default class Users {
      * @private
      */
     static checkSession (req: Request | any): boolean {
-        return req.session.username;
+
+        if (!req.session || !req.session.username) return false;
+        else return true;
+
     }
 
     /**
@@ -133,9 +137,26 @@ export default class Users {
      * @returns {*}
      */
     public async handleSession (req: Request | any, res: Response, next: NextFunction): Promise<void> {
-        
+
         if (!Users.checkSession(req)) return res.redirect('/login');
         else return next();
+
+    }
+
+    /**
+     * @name checkUserPassword
+     * @description Check user password by compare input hash and user db password
+     * @param {String} username name of account to check
+     * @param {String} password password from input
+     * @returns {Promise<boolean>} If account correct method will return true
+     */
+    public async checkUserPassword (username: string, password: string): Promise<boolean> {
+
+        const userData = await db.users.findOne({ username });
+        const comapred = compareSync(password, (userData?.password as any));
+
+        if (comapred) return true;
+        else return false;
 
     }
 

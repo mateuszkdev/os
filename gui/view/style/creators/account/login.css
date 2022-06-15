@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+html, body {
+    background: #edf2f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login {
+    background: #2b2d42;
+    border-radius: 4px;
+    width: 300px;
+    height: auto;
+}
+.login-inner {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.login-inner-avatar {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/217538/default-avatar-ponsy-deer.png);
+    background-size: cover;
+    border: 3px solid #edf2f4;
+    width: 4em;
+    height: 4em;
+    margin: 0 auto;
+    transform: translateY(-35px);
+    border-radius: 100%;
+}
+.login-inner-check {
+    border: 1px dashed #fff;
+    border-radius: 100%;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    margin: -185px 120px;
+    opacity: 0;
+    text-align: center;
+}
+.login-inner-check-complete i {
+    line-height: 4em;
+    color: #fff;
+    opacity: 0;
+}
+.login-inner input {
+    appearance: none;
+    background: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #33354e;
+    width: 100%;
+    padding: 1.1em;
+    color: #fff;
+    outline: none;
+    font-size: 0.9em;
+    text-align: left;
+}
+.login-inner input:last-of-type {
+    border-bottom: none;
+}
+.login-inner input[type="submit"] {
+    background: #4ecdc4;
+    cursor: pointer;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    text-align: center;
+    margin: 3em auto 0 auto;
+}
+.loggedin {
+    background: #2b2d42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.loggedin h2 {
+    opacity: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.7em;
+}
+::-webkit-input-placeholder {
+    color: #fff;
+}
+:-moz-placeholder {
+    color: #fff;
+}
+::-moz-placeholder {
+    color: #fff;
+}
+:-ms-input-placeholder {
+    color: #fff;
+}
+::-ms-input-placeholder {
+    color: #fff;
+}
+.hide {
+    opacity: 0;
+}
+.show {
+    opacity: 1;
+}
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error {
+    color: red;
+    margin: 10px;
+    text-align: center;
+}

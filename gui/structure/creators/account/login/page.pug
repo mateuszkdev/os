@@ -1,0 +1,24 @@
+head
+
+    script(src="scripts/creators/account/gowno.js")
+    script(src="scripts/creators/account/login.js")
+    script(src="scripts/disableScroll.js")
+    link(rel="stylesheet" href="style/creators/account/login.css")
+
+body
+
+    div.login
+        div.login-inner
+            div.login-inner-avatar
+            // @todo custom language
+            form(method="post" action="/login")
+                input(type="text" placeholder="username" autocomplete="off" required autofocus name="username")#username
+                input(type="password" placeholder="password" autocomplete="off" required name="password")#password
+                input(type="submit" value="log in")
+                p.error #{error}
+
+        div.login-inner-check
+            div.login-inner-check-complete
+                i(class="fa fa-check")
+    div.loggedin
+        h2

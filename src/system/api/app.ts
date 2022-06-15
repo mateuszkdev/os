@@ -20,7 +20,9 @@ export default class SystemApp {
     constructor () {
 
         this.app = ex();
+
         this.setUp();
+
     }
 
     /**
@@ -40,9 +42,8 @@ export default class SystemApp {
         this.app.use(new ErrorsHandler().errorsHandler);
 
         this.app.get('/', (req, res) => res.render('desktop'));
-        await new AppsHandler(this.app);
+        new AppsHandler(this.app);
         this.app.use(users.handleSession);
-
         this.setUpUnknwonRoutes();
 
     }

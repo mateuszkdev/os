@@ -1,13 +1,10 @@
 import ex from 'express';
 import es from 'express-session';
-import { lang } from '../../run';
+import { lang, users } from '../../run';
 
 import conf from '../../config/express';
 import ErrorsHandler from "../handlers/Errors";
 import AppsHandler from '../handlers/Apps';
-
-// @todo - Delete this line
-import { users } from '../../run';
 
 /**
  * @name SystemApp
@@ -23,18 +20,6 @@ export default class SystemApp {
     constructor () {
 
         this.app = ex();
-
-        // tests @todo - remove tests when "test" handling available
-        this.app.get('/', (req, res) => res.render('desktop'));
-        // this.app.get('/test', async (req, res) => {
-        //     const _ = await users.createUser('Mateusz');
-        //     if (_ instanceof Error) {
-        //         new ErrorsHandler().critical(res, _);
-        //
-        //     }
-        //     else return console.log('User created');
-        // });
-
         this.setUp();
     }
 
@@ -54,14 +39,30 @@ export default class SystemApp {
         this.app.use(es(conf.session));
         this.app.use(new ErrorsHandler().errorsHandler);
 
+        this.app.get('/', (req, res) => res.render('desktop'));
         await new AppsHandler(this.app);
+        this.app.use(users.handleSession);
 
-        const currentLang = lang.get('error', { h4: lang.langs.get('en')?.error.h4s });
-        this.app.get('*', (req, res) => res.render('error', { ...currentLang }));
-        this.app.post('*', (req, res) => res.render('error', { ...currentLang }));
+        this.setUpUnknwonRoutes();
 
-        // @todo - session ( user logged ) handler
+    }
 
+    /**
+     * @name setUpUnknwonRoutes
+     * @description Handle unknow routes
+     * @returns {*}
+     * @private
+     */
+    private setUpUnknwonRoutes (): void {
+
+        ['get', 'post'].forEach(e => {
+             (this.app as any)[e]('*', (req: ex.Request, res: ex.Response) => {
+
+                 const currentLang = lang.get('error', { h4: lang.langs.get(lang.cache.language)?.error.h4s });
+                 res.render('error', { ...currentLang });
+
+             });
+         });
     }
 
     /**
@@ -70,10 +71,7 @@ export default class SystemApp {
      * @returns {Promise<void>} 
      */
     async start (): Promise<void> {
-
-        //@todo - Loading screen information
         this.app.listen(conf.port, () => console.info('Starting express'));
-
     }
 
 }

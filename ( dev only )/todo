@@ -1,10 +1,10 @@
 [✅] User account creating
 [] User logging
-[] Register panel
+[✅] Register panel
 [] Login panel
 [✅] System error handling
 [✅] Routing apps
-[✅] Apps handler
+[] Apps handler
 [✅] Languages handler
 [✅] Languages config
 [] dirs

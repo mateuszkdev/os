@@ -1,6 +1,6 @@
 import { IUser } from 'Types/system/database/models/Users';
 import { db } from '../../run';
-import { Document } from 'mongoose';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * User default config
@@ -110,6 +110,32 @@ export default class Users {
 
         await db.users.updateOne({ username }, { password });
         return true;
+
+    }
+
+    /**
+     * @name checkSession
+     * @description Check session
+     * @param  {Request} req Express request
+     * @returns {Promise<boolean>} If session is, returns true else, return false
+     * @private
+     */
+    static checkSession (req: Request | any): boolean {
+        return req.session.username;
+    }
+
+    /**
+     * @name handleSession
+     * @description Handle user session
+     * @param {Request} req Express request
+     * @param {Response} res Express response
+     * @param {NextFunction} next Express next function
+     * @returns {*}
+     */
+    public async handleSession (req: Request | any, res: Response, next: NextFunction): Promise<void> {
+        
+        if (!Users.checkSession(req)) return res.redirect('/login');
+        else return next();
 
     }
 

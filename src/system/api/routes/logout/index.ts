@@ -3,7 +3,7 @@ import { users } from '../../../../run';
 
 export default {
 
-    name: '/login',
+    name: '/logout',
 
     get: async ({ res, req }) => {
 

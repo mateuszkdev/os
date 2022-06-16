@@ -18,12 +18,9 @@ export default {
             const username = req.body.username;
             const password = req.body.password;
 
-            // @todo custom language
             if (!await users.checkIsUserExists(username)) return res.render('creators/account/login/page', { error: 'Incorrect username' });
 
             const passwordCheck = await users.checkUserPassword(username, password);
-
-            // @todo custom language
             if (!passwordCheck) return res.render('creators/account/login/page', { error: 'Incorrect password' });
 
         }, 1000);

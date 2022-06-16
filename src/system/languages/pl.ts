@@ -9,6 +9,13 @@ export default {
         h4s: 'Coś poszło nie tak. Spróbuj zrestartować system'
     },
 
+    desktop: {
+        home: {
+            logout: 'Wyloguj',
+            shutdown: 'Wyłącz'
+        }
+    },
+
     accountCreator: {
         p2: {
             header: 'Nazwa & Hasło',

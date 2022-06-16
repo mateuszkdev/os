@@ -7,6 +7,13 @@ export interface ILanguage {
         h4s: string;
     },
 
+    desktop: {
+        home: {
+            logout: string;
+            shutdown: string;
+        }
+    }
+
     accountCreator: {
         p2: {
             header: string;

@@ -41,7 +41,8 @@ export default class SystemApp {
         this.app.use(es(conf.session));
         this.app.use(new ErrorsHandler().errorsHandler);
 
-        this.app.get('/', (req, res) => res.render('desktop'));
+                                                            // @todo custom language and move it to another file
+        this.app.get('/', (req, res) => res.render('desktop', { logOut: 'log out', shutDown: 'shut down' }));
         new AppsHandler(this.app);
         this.app.use(users.handleSession);
         this.setUpUnknwonRoutes();

@@ -5,7 +5,10 @@ export default {
     name: '/shutdown',
 
     get: ({}) => {
-        // some code
+
+        process.exit();
+        return
+
     },
 
     post: ({}) => {

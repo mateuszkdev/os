@@ -1,3 +1,9 @@
+:root {
+    --taskbarHeight: 30px;
+    --menuContentDefaultMargin: 20px;
+    --menuContentDefaultPadding: 30px;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, sans-serif;
@@ -13,7 +19,7 @@ body {
     bottom: 0;
     position: fixed;
     width: 99%;
-    height: 30px;
+    height: var(--taskbarHeight);
     background-color: rgba(0, 0, 0, 0.63);
     color: white;
 
@@ -23,5 +29,71 @@ body {
 
     padding: 10px;
     float: right;
+
+}
+
+.menuButton {
+    float: left;
+    padding: 15px;
+    margin-left: 50px;
+    border: 1px rgba(255, 255, 255, 0.48) solid;
+}
+
+.menuButton:hover {
+    background-color: rgba(255, 255, 255, 0.48);
+    cursor: pointer;
+    border: 1px rgba(255, 255, 255, 0.84) solid;
+}
+
+#home {
+    width: 20%;
+    height: 50%;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    padding: var(--menuContentDefaultPadding) var(--menuContentDefaultPadding) 10px var(--menuContentDefaultPadding) ;
+    margin: var(--menuContentDefaultMargin) var(--menuContentDefaultMargin) calc(var(--menuContentDefaultMargin) + var(--taskbarHeight)) var(--menuContentDefaultMargin);
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.24);
+    border-radius: 10%;
+    box-shadow: 2px 1px 90px black;
+}
+
+#home:hover {
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+#home a {
+
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10cm;
+    color: white;
+    background-color: #2b2d48;
+    text-decoration: none;
+
+}
+
+#home a:hover {
+
+    color: white;
+    background-color: #141631;
+    box-shadow: 1px 1px 2137px rgba(255, 255, 255, 0.6);
+
+}
+
+.topPanel {
+    width: 100%;
+    height: 80%;
+}
+
+.bottomPanel {
+
+    text-align: center;
+    height: 15%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
 
 }

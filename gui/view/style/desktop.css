@@ -97,3 +97,36 @@ body {
     position: absolute;
 
 }
+
+.icon {
+
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    text-align: center;
+
+}
+
+.icon:hover {
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background-color: rgba(255, 255, 255, 0.14);
+
+}
+
+.icon img {
+
+    padding: 10px;
+    width: 50px;
+
+}
+
+.icon a {
+
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+
+}

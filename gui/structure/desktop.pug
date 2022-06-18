@@ -5,19 +5,23 @@ head
 
 body
 
-    // @todo Add custom language
-    a(href="/calc")
-        div.icon
-            img(src="assets/images/desktop/default.png")
-            br
-            a calc
+    section.appsSection
 
-    // @todo Add custom language
-    a(href="/settings")
-        div.icon
-            img(src="assets/images/desktop/default.png")
-            br
-            a settings
+        for app in apps
+            a(href=app.appEndpoint)
+                div.icon
+                    img(src=app.appImage)
+                    br
+                    a #{app.appName}
+
+    section.dirsSection
+
+        for dir in dirs
+            a(href=dir.dirEndpoint)
+                div.icon
+                    img(src=dir.dirImage)
+                    br
+                    a #{dir.dirName}
 
     section#home
 

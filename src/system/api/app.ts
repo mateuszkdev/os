@@ -42,7 +42,7 @@ export default class SystemApp {
         this.app.use(new ErrorsHandler().errorsHandler);
 
         new AppsHandler(this.app);
-        this.app.use(users.handleSession);
+        // this.app.use(users.handleSession); @todo Session handler need fix ( it everytime rediect into login panel ( but no if u in desktop "/" endpoint )
         this.setUpUnknwonRoutes();
 
     }

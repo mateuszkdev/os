@@ -22,10 +22,10 @@ export default {
         const dirImage = 'assets/images/desktop/defaultDir.png';
         const dirs = [
             {
-                dirName: 'photos', dirImage, dirEndpoint: '/desktop/photos'
+                dirName: 'photos', dirImage, dirEndpoint: '/dir'
             },
             {
-                dirName: 'texts', dirImage, dirEndpoint: '/desktop/texts'
+                dirName: 'texts', dirImage, dirEndpoint: '/dir'
             }
         ];
 

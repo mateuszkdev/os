@@ -13,17 +13,15 @@ export default {
 
     post: async ({ req, res }) => {
 
-        setTimeout(async () => {
+        const username = req.body.username;
+        const password = req.body.password;
 
-            const username = req.body.username;
-            const password = req.body.password;
+        if (!await users.checkIsUserExists(username)) return res.render('creators/account/login/page', { error: 'Incorrect username' });
 
-            if (!await users.checkIsUserExists(username)) return res.render('creators/account/login/page', { error: 'Incorrect username' });
+        const passwordCheck = await users.checkUserPassword(username, password);
+        if (!passwordCheck) return res.render('creators/account/login/page', { error: 'Incorrect password' });
 
-            const passwordCheck = await users.checkUserPassword(username, password);
-            if (!passwordCheck) return res.render('creators/account/login/page', { error: 'Incorrect password' });
-
-        }, 1000);
+        req.session.username = username;
 
     }
 

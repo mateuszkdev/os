@@ -4,9 +4,6 @@ head
     script(src="scripts/disableScroll.js")
 
 body
-
-    // its just helper for prelad clock in desktop taskbar
-    // (it must be local becouse its not a HTML code, its pug pre load js not added to render)
     - const f = (n) => { if (n < 10) return `0${n}`; else return n };
     - const n = new Date();
     - const t = `${f(n.getHours())}:${f(n.getMinutes())}:${f(n.getSeconds())}`;

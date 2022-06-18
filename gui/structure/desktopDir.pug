@@ -5,6 +5,8 @@ append container
     section.dirExplorer
 
         header
+            a.dirName desktop/test
+            a(href='/').closeBtn
 
         section.main
 
@@ -12,6 +14,12 @@ append container
                 | test
 
             section.right
-                | test
+
+                for file in dirFiles
+                    a(href=file.name)
+                        div.icon
+                            img(src=file.image)
+                            br
+                            a #{file.name}
 
         footer

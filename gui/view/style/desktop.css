@@ -148,3 +148,103 @@ body {
     cursor: pointer;
 
 }
+
+/* Dirs css section */
+:root {
+    --dirWidth: 90%;
+    --dirHeight: 90%;
+    --dirInHeaderFooterHeight: 5%;
+    --dirInMainHeight: 90%;
+    --colorDirLite: rgba(127, 127, 127, 0.5);
+    --colorDirDark: rgba(53, 53, 53, 0.5);
+}
+
+.dirExplorer {
+
+    position: absolute;
+    left: calc((100% - var(--dirWidth)) / 2);
+    top: calc((100% - var(--dirHeight)) / 2);
+    width: var(--dirWidth);
+    height: calc(var(--dirHeight) - var(--taskbarHeight));
+    /* @todo Custom color between white and dark system style */
+    background-color: var(--colorDirLite);
+    border: 3px solid var(--colorDirDark);
+    border-radius: 20px;
+
+}
+
+.dirExplorer header {
+
+    background-color: var(--colorDirDark);
+    width: 100%;
+    height: var(--dirInHeaderFooterHeight);
+    border-radius: 17px 17px 0 0;
+
+}
+
+.dirExplorer header .dirName {
+
+    position: absolute;
+    left: 70px;
+    margin-top: 5px;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 20px black;
+    box-shadow: 1px 1px 100px black;
+    cursor: default;
+
+}
+
+.dirExplorer header .closeBtn {
+
+    position: absolute;
+    right: 25px;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 10cm;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+
+}
+
+.dirExplorer header .closeBtn:hover {
+
+    background-color: #fd2f2f;
+    box-shadow: 1px 1px 10px red;
+
+}
+
+.dirExplorer .main {
+
+    width: 100%;
+    height: var(--dirInMainHeight);
+
+}
+
+.dirExplorer .main .left {
+
+    width: 20%;
+    height: 100%;
+    border: 0.5px solid var(--colorDirDark);
+    float: left;
+
+}
+
+.dirExplorer .main .right {
+
+    height: 100%;
+    width: 78%;
+    float: left;
+
+}
+
+.dirExplorer footer {
+
+    background-color: var(--colorDirDark);
+    width: 100%;
+    height: var(--dirInHeaderFooterHeight);
+    border-radius: 0 0 17px 17px;
+
+}

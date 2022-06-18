@@ -1,10 +1,6 @@
-head
+extends desktopTemplate.pug
 
-    link(rel="stylesheet" href="style/desktop.css")
-    script(src="scripts/disableScroll.js")
-
-body
-
+append container
     section.appsSection
 
         for app in apps
@@ -22,21 +18,3 @@ body
                     img(src=dir.dirImage)
                     br
                     a #{dir.dirName}
-
-    section#home
-
-        div.topPanel
-
-        div.bottomPanel
-            a(href='/logout') #{logOut}
-            a(href='/shutdown') #{shutDown}
-
-
-    section#taskbar
-
-        div.menuButton(onclick='switchHome();')
-
-        div.clock#taskBarClock 00:00:00
-
-    script(src="scripts/taskbar/clock.js")
-    script(src="scripts/taskbar/home.js")

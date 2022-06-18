@@ -7,10 +7,10 @@
 [✅] Languages handler
 [✅] Languages config
 [✅] Desktop apps css
-[] dirs
+[/] dirs
 [] Apps css / js / img handler
-[] Apps handler for express
+[/] Apps handler for express
 [] Images / music / videos handler + database
-[] Desktop folders
+[/] Desktop folders
 [] System settings window
 [] User profile avatar in #home section in desktop

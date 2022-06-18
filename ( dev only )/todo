@@ -10,3 +10,7 @@
 [] dirs
 [] Apps css / js / img handler
 [] Apps handler for express
+[] Images / music / videos handler + database
+[] Desktop folders
+[] System settings window
+[] User profile avatar in #home section in desktop

@@ -5,6 +5,7 @@ import SystemApp from './system/api/app';
 import Gui from './system/gui/view';
 import Languages from './system/handlers/Languages';
 import Users from './system/handlers/Users';
+import Dirs from './system/handlers/Dirs';
 
 // export ( and ofc connect db ) models
 export * from './system/database/index';
@@ -25,4 +26,5 @@ export default class Os {
 
 export const lang = new Languages();
 export const users = new Users();
+export const dirs = new Dirs();
 Os.start();

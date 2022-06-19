@@ -30,13 +30,13 @@ export default class Dirs {
 
         const paths = path.trim().split(new RegExp('/', 'gmi'));
 
-        const newDirData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultDir.png', type: 'dir' };
+        const newDirData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultDir.png', type: 'dir', path };
 
         for (let p in paths) {
             if (!await db.dirs.findOne({ name: p })) return 'Unknow path';
         }
 
-        newDirData.parent = paths[path.length];
+        newDirData.parent = path;
 
         const familyDrama = await db.dirs.findOne({ parent: newDirData.parent, name });
         if (familyDrama?.name) return `Directory "${name}" is already created in this path.`
@@ -62,12 +62,23 @@ export default class Dirs {
             if (!await db.dirs.findOne({ name: p })) return 'Unknow path';
         }
 
-        const name = paths[path.length];
-
-        await db.dirs.deleteOne({ name });
-        await db.dirs.deleteMany({ parent: name });
+        await db.dirs.deleteOne({ path });
+        await db.dirs.deleteMany({ parent: path });
 
         return `Directory ${path} has ben successfull removed with all data inside.`
+
+    }
+
+    /**
+     * @name getDirData
+     * @description Get dir data ( another dirs and files etc )
+     * @param {string} path Directory location
+     * @returns {Promise<IDir[]>} Array of dirs / files
+     */
+    public async getDirData (path: string): Promise<IDir[]> {
+
+        if (!await db.dirs.findOne({ path })) return [];
+        return db.dirs.find({ parent: path });
 
     }
 

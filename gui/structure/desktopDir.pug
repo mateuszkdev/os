@@ -39,8 +39,9 @@ append container
 
             section.right
 
-                for file in dirFiles
-                    a(href=file.name)
+                // @todo fix it kurwa, form or idk cuz it cant handle data path/name
+                for file in dirData
+                    a(href=file.name name="path" value=file.path)
                         div.icon
                             img(src=file.icon)
                             br

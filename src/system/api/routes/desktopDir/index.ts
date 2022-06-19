@@ -1,5 +1,5 @@
 import { App } from 'Types/system/api/apps';
-import { lang } from '../../../../run';
+import { lang, dirs } from '../../../../run';
 
 export default {
 
@@ -8,21 +8,11 @@ export default {
     get: async ({ res, req }) => {
 
         const dirName = req.body.dirName;
-
-        // @todo Dir files manager
-        const dirFiles = [
-            {
-                name: 'test1',
-                icon: 'assets/images/desktop/defaultFile.png'
-            },
-            {
-                name: 'test2',
-                icon: 'assets/images/desktop/defaultDir.png'
-            }
-        ];
+        console.log(dirName)
+        const dirData = await dirs.getDirData(dirName);
 
         const l = lang.langs.get(lang.cache.language)?.desktop.home;
-        return res.render('desktopDir', { logOut: l?.logout, shutDown: l?.shutdown, dirFiles, dirName });
+        return res.render('desktopDir', { logOut: l?.logout, shutDown: l?.shutdown, dirData, dirName });
 
     },
 

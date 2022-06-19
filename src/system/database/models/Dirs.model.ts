@@ -14,6 +14,9 @@ export const dirs = model<IDir>('Dirs', new Schema({
     },
     type: {
         type: String, required: true
+    },
+    path: {
+        type: String, required: true
     }
 
 }));

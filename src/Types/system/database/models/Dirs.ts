@@ -1,4 +1,5 @@
 export interface IDir {
+    path: string;
     name: string;
     parent: string;
     icon: string;

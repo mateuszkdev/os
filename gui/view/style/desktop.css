@@ -255,5 +255,58 @@ body {
 
 .form {
     position: absolute;
-    bottom: 0;
+    bottom: 3%;
+    width: 20%;
+}
+
+.form input[type="submit"] {
+
+    background-color: var(--colorDirLite);
+    border: 1px solid var(--colorDirDark);
+    color: white;
+    text-shadow: 1px 1px 120px white;
+    padding: 5px;
+    width: 30%;
+
+}
+
+.form input[type="submit"]:hover {
+
+    box-shadow: 1px 1px 50px white;
+    cursor: pointer;
+
+}
+
+.form input[type="text"] {
+
+    background-color: var(--colorDirLite);
+    border: 1px solid var(--colorDirDark);
+    padding: 5px;
+    width: 70%;
+    color: white;
+
+}
+
+.form form {
+    width: 100%;
+}
+
+.left .add {
+
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-top: 5%;
+
+}
+
+.left .add button {
+    background-color: var(--colorDirDark);
+    color: white;
+    padding: 10px;
+}
+
+.left .add button:hover {
+    box-shadow: 1px 1px 20px white;
+    cursor: pointer;
 }

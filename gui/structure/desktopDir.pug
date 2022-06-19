@@ -12,26 +12,30 @@ append container
 
             section.left
 
-                section.addDir
+                section.add
 
                     // @todo Custom button languages
                     button(onclick="dirHandle('dir');")#handleDirBtn Add directory
-                    div.form#dir
-                        form(action="dirManagment" method="post")
-                            input(type="text" name="add" value="dir" style="display: none;")
-                            input(type="text" name="parent" value=parent style="display: none;")
-                            input(type="text" name="name" required placeholder="name" autocomplete="off")
-                            input(type="submit" value=submitText onclick="dirHandle('dir');")
 
-                section.addSpecial
+                section.add
 
                     button(onclick="dirHandle('special');")#handleSpecialBtn Add special
-                    div.form#special
-                        form(action="dirManagment" method="post")
-                            input(type="text" name="add" value="special" style="display: none;")
-                            input(type="text" name="parent" value=parent style="display: none;")
-                            input(type="text" name="name" required placeholder="name" autocomplete="off")
-                            input(type="submit" value=submitText onclick="dirHandle('special');")
+
+
+                // @todo Custom form languages
+                div.form#dir
+                    form(action="dirManagment" method="post")
+                        input(type="text" name="add" value="dir" style="display: none;")
+                        input(type="text" name="parent" value=parent style="display: none;")
+                        input(type="text" name="name" required placeholder="name" autocomplete="off")
+                        input(type="submit" value=submitText onclick="dirHandle('dir');")
+
+                div.form#special
+                    form(action="dirManagment" method="post")
+                        input(type="text" name="add" value="special" style="display: none;")
+                        input(type="text" name="parent" value=parent style="display: none;")
+                        input(type="text" name="name" required placeholder="name" autocomplete="off")
+                        input(type="submit" value=submitText onclick="dirHandle('special');")
 
             section.right
 

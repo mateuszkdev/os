@@ -7,7 +7,7 @@ Clone repo: `git clone https://github.com/mateuszkdev/os`
 
 ## How to start
 
-**1.** `npm i` (make shure u have typescript compiler)
+**1.** `npm i` (make sure u have typescript compiler)
 
 **2.** `tsc --build`
 

@@ -248,3 +248,12 @@ body {
     border-radius: 0 0 17px 17px;
 
 }
+
+.disabled {
+    display: none;
+}
+
+.form {
+    position: absolute;
+    bottom: 0;
+}

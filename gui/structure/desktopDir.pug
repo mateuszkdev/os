@@ -11,7 +11,27 @@ append container
         section.main
 
             section.left
-                | test
+
+                section.addDir
+
+                    // @todo Custom button languages
+                    button(onclick="dirHandle('dir');")#handleDirBtn Add directory
+                    div.form#dir
+                        form(action="dirManagment" method="post")
+                            input(type="text" name="add" value="dir" style="display: none;")
+                            input(type="text" name="parent" value=parent style="display: none;")
+                            input(type="text" name="name" required placeholder="name" autocomplete="off")
+                            input(type="submit" value=submitText onclick="dirHandle('dir');")
+
+                section.addSpecial
+
+                    button(onclick="dirHandle('special');")#handleSpecialBtn Add special
+                    div.form#special
+                        form(action="dirManagment" method="post")
+                            input(type="text" name="add" value="special" style="display: none;")
+                            input(type="text" name="parent" value=parent style="display: none;")
+                            input(type="text" name="name" required placeholder="name" autocomplete="off")
+                            input(type="submit" value=submitText onclick="dirHandle('special');")
 
             section.right
 
@@ -23,3 +43,6 @@ append container
                             a #{file.name}
 
         footer
+
+append innerBottom
+    script(src="scripts/desktop/desktopDirHelper.js")

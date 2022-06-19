@@ -20,5 +20,6 @@ run().catch(e => console.error(e));
 
 // models export
 import { users } from './models/Users.model';
+import { dirs } from './models/Dirs.model';
 
-export const db = { users };
+export const db = { users, dirs };

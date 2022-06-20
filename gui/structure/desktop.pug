@@ -13,7 +13,7 @@ append container
     section.dirsSection
 
         for dir in dirs
-            a(href=dir.dirEndpoint name="name" value=dir.dirName)
+            a(onclick=`open('${dir.dirName}')`)
                 div.icon
                     img(src=dir.dirImage)
                     br

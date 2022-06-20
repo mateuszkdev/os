@@ -39,14 +39,19 @@ append container
 
             section.right
 
-                // @todo fix it kurwa, form or idk cuz it cant handle data path/name
                 for file in dirData
-                    a(href=file.name name="path" value=file.path)
-                        div.icon
-                            img(src=file.icon)
-                            br
-                            a #{file.name}
-
+                    if file.type ==='dir'
+                        a(onClick=`open(${dir.path})`)
+                            div.icon
+                                img(src=file.icon)
+                                br
+                                a #{file.name}
+                    else
+                        a(href=file.name)
+                            div.icon
+                                img(src=file.icon)
+                                br
+                                a #{file.name}
         footer
 
 append innerBottom

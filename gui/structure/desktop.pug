@@ -13,7 +13,7 @@ append container
     section.dirsSection
 
         for dir in dirs
-            form(method="post" action="/dir" id=dir.path)
+            form(method="post" action="/dir" id=dir.path style="margin: 0;")
                 input(type="text" name="path" value=dir.path style="display: none;")
                 div.icon(onClick=`document.getElementById('${dir.path}').submit();`)
                     img(src=dir.dirImage)

@@ -25,34 +25,34 @@ append container
                 // @todo Custom form languages
                 div.form#dir
                     form(action="dirManagment" method="post")
-                        input(type="text" name="add" value="dir" style="display: none;")
                         input(type="text" name="parent" value=path style="display: none;")
+                        input(type="text" name="type" value="dir" style="display: none;")
                         input(type="text" name="name" required placeholder="name" autocomplete="off")
                         input(type="submit" value=">" onclick="dirHandle('dir');")
 
                 div.form#special
                     form(action="dirManagment" method="post")
-                        input(type="text" name="add" value="special" style="display: none;")
                         input(type="text" name="parent" value=path style="display: none;")
+                        input(type="text" name="type" value="special" style="display: none;")
                         input(type="text" name="name" required placeholder="name" autocomplete="off")
                         input(type="submit" value=">" onclick="dirHandle('special');")
 
             section.right
 
-                for file in dirData
-                    if file.type ==='dir'
-                        form(method="post" action="/dir" id=dir.path)
-                            input(type="text" name="path" value=dir.path style="display: none;")
-                            div.icon(onClick=`document.getElementById('${dir.path}').submit();`)
-                                img(src=dir.dirImage)
+                for e in dirData
+                    if e.type ==='dir'
+                        form(method="post" action="/dir" id=e.path style="margin: 0;")
+                            input(type="text" name="path" value=e.path style="display: none;")
+                            div.icon(onClick=`document.getElementById('${e.path}').submit();`)
+                                img(src=e.icon)
                                 br
-                                a #{dir.name}
+                                a #{e.name}
                     else
-                        a(href=file.name)
+                        a(href=e.name)
                             div.icon
-                                img(src=file.icon)
+                                img(src=e.icon)
                                 br
-                                a #{file.name}
+                                a #{e.name}
         footer
 
 append innerBottom

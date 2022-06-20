@@ -30,21 +30,19 @@ export default class Dirs {
 
         const paths = path.trim().split(new RegExp('/', 'gmi'));
 
-        const newDirData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultDir.png', type: 'dir', path };
+        const newDirData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultDir.png', type: 'dir', path: '' };
 
-        for (let p in paths) {
-            if (!await db.dirs.findOne({ name: p })) return 'Unknow path';
-        }
-
+        if (paths.length > 1 && !await db.dirs.findOne({ path })) return 'Unknown path';
         newDirData.parent = path;
 
         const familyDrama = await db.dirs.findOne({ parent: newDirData.parent, name });
         if (familyDrama?.name) return `Directory "${name}" is already created in this path.`
 
         newDirData.name = name;
+        newDirData.path = `${path}/${name}`;
 
         await db.dirs.insertMany([newDirData]);
-        return `Dir ${path} created successfull`;
+        return `Dir ${newDirData.path} created successfull`;
 
     }
 
@@ -77,8 +75,8 @@ export default class Dirs {
      */
     public async getDirData (path: string): Promise<IDir[]> {
 
-        if (!await db.dirs.findOne({ path })) return [];
-        return db.dirs.find({ parent: path });
+        const response = await db.dirs.find({ parent: path });
+        return response;
 
     }
 

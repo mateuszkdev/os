@@ -5,14 +5,13 @@ export default {
 
     name: '/dir',
 
-    get: async ({ res, req }) => {
+    post: async ({ res, req }) => {
 
-        const dirName = req.body.dirName;
-        console.log(dirName)
-        const dirData = await dirs.getDirData(dirName);
+        const path = req.body.path;
+        const dirData = await dirs.getDirData(path);
 
         const l = lang.langs.get(lang.cache.language)?.desktop.home;
-        return res.render('desktopDir', { logOut: l?.logout, shutDown: l?.shutdown, dirData, dirName });
+        return res.render('desktopDir', { logOut: l?.logout, shutDown: l?.shutdown, dirData, path });
 
     },
 

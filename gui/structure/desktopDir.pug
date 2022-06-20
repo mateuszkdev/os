@@ -5,7 +5,7 @@ append container
     section.dirExplorer
 
         header
-            a.dirName desktop/test
+            a.dirName #{path}
             a(href='/').closeBtn
 
         section.main
@@ -26,26 +26,27 @@ append container
                 div.form#dir
                     form(action="dirManagment" method="post")
                         input(type="text" name="add" value="dir" style="display: none;")
-                        input(type="text" name="parent" value=parent style="display: none;")
+                        input(type="text" name="parent" value=path style="display: none;")
                         input(type="text" name="name" required placeholder="name" autocomplete="off")
-                        input(type="submit" value=submitText onclick="dirHandle('dir');")
+                        input(type="submit" value=">" onclick="dirHandle('dir');")
 
                 div.form#special
                     form(action="dirManagment" method="post")
                         input(type="text" name="add" value="special" style="display: none;")
-                        input(type="text" name="parent" value=parent style="display: none;")
+                        input(type="text" name="parent" value=path style="display: none;")
                         input(type="text" name="name" required placeholder="name" autocomplete="off")
-                        input(type="submit" value=submitText onclick="dirHandle('special');")
+                        input(type="submit" value=">" onclick="dirHandle('special');")
 
             section.right
 
                 for file in dirData
                     if file.type ==='dir'
-                        a(onClick=`open(${dir.path})`)
-                            div.icon
-                                img(src=file.icon)
+                        form(method="post" action="/dir" id=dir.path)
+                            input(type="text" name="path" value=dir.path style="display: none;")
+                            div.icon(onClick=`document.getElementById('${dir.path}').submit();`)
+                                img(src=dir.dirImage)
                                 br
-                                a #{file.name}
+                                a #{dir.name}
                     else
                         a(href=file.name)
                             div.icon

@@ -13,8 +13,9 @@ append container
     section.dirsSection
 
         for dir in dirs
-            a(onclick=`open('${dir.dirName}')`)
-                div.icon
+            form(method="post" action="/dir" id=dir.path)
+                input(type="text" name="path" value=dir.path style="display: none;")
+                div.icon(onClick=`document.getElementById('${dir.path}').submit();`)
                     img(src=dir.dirImage)
                     br
-                    a #{dir.dirName}
+                    a #{dir.path}

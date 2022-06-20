@@ -9,6 +9,7 @@ import { db } from '../../run';
 export default class Dirs {
 
     accessableTypes: type[];
+    replaceReg: RegExp;
 
     /**
      * Create class
@@ -16,6 +17,7 @@ export default class Dirs {
     constructor () {
 
         this.accessableTypes = ['file', 'dir'];
+        this.replaceReg = new RegExp('/', 'gmi');
 
     }
 
@@ -28,14 +30,15 @@ export default class Dirs {
      */
     public async mkDir (path: string, name: string): Promise<string> {
 
-        const paths = path.trim().split(new RegExp('/', 'gmi'));
+        name = name.replace(this.replaceReg, '_');
 
+        const paths = path.trim().split(this.replaceReg);
         const newDirData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultDir.png', type: 'dir', path: '' };
 
         if (paths.length > 1 && !await db.dirs.findOne({ path })) return 'Unknown path';
         newDirData.parent = path;
 
-        const familyDrama = await db.dirs.findOne({ parent: newDirData.parent, name });
+        const familyDrama = await db.dirs.findOne({ parent: newDirData.parent, name, type: 'dir' });
         if (familyDrama?.name) return `Directory "${name}" is already created in this path.`
 
         newDirData.name = name;
@@ -54,7 +57,7 @@ export default class Dirs {
      */
     public async rmDir (path: string): Promise<string> {
 
-        const paths = path.trim().split(new RegExp('/', 'gmi'));
+        const paths = path.trim().split(this.replaceReg);
 
         for (let p in paths) {
             if (!await db.dirs.findOne({ name: p })) return 'Unknow path';
@@ -77,6 +80,34 @@ export default class Dirs {
 
         const response = await db.dirs.find({ parent: path });
         return response;
+
+    }
+
+    /**
+     * @name createFile
+     * @description Create new file
+     * @param {string} path File location
+     * @param {string} name File name with extension
+     * @returns {Promise<string>}
+     */
+    public async createFile (path: string, name: string): Promise<string> {
+
+        name = name.replace(this.replaceReg, '_');
+
+        const newFileData: IDir = { parent: '', name: '', icon: 'assets/images/desktop/defaultFile.png', type: 'file', path: '' };
+        const paths = path.trim().split(this.replaceReg);
+
+        if (paths.length > 1 && !await db.dirs.findOne({ path })) return 'Unknow path.';
+
+        const familyDrama = await db.dirs.findOne({ parent: path, name: name, type: 'file' });
+        if (familyDrama?.name) return `File "${name}" is already created in this directory.`;
+
+        newFileData.name = name;
+        newFileData.path = `${path}/${name}`;
+        newFileData.parent = path;
+
+        await db.dirs.insertMany([newFileData]);
+        return `File ${newFileData.path} created successfull`;
 
     }
 

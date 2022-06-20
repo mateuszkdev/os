@@ -19,7 +19,7 @@ append container
 
                 section.add
 
-                    button(onclick="dirHandle('special');")#handleSpecialBtn Add special
+                    button(onclick="dirHandle('special');")#handleSpecialBtn Add file
 
 
                 // @todo Custom form languages
@@ -33,7 +33,7 @@ append container
                 div.form#special
                     form(action="dirManagment" method="post")
                         input(type="text" name="parent" value=path style="display: none;")
-                        input(type="text" name="type" value="special" style="display: none;")
+                        input(type="text" name="type" value="file" style="display: none;")
                         input(type="text" name="name" required placeholder="name" autocomplete="off")
                         input(type="submit" value=">" onclick="dirHandle('special');")
 
